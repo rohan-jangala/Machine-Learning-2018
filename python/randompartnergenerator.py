@@ -11,9 +11,12 @@ for i in range(int(length/2) - 1):
     print(a)
 last = ''
 
-for j in people:
+x = 0
+
+while x < len(people) - 1:
     last += j + ', '
 
+last += people[len(people)-1]
 print(last)
 
 
