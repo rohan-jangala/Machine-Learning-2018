@@ -14,9 +14,11 @@ last = ''
 x = 0
 
 while x < len(people) - 1:
-    last += j + ', '
+    last += people[x] + ', '
+    x += 1
 
 last += people[len(people)-1]
+
 print(last)
 
 
