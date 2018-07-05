@@ -2,7 +2,11 @@ import numpy as np
 import tflearn
 
 from tflearn.data_utils import load_csv
-data, labels = load_csv('crypto-markets.csv', target_column = 8, columns_to_ignore = [0, 2, 3], categorical_labels = True, n_classes = 2)
+data, labels = load_csv('sp500.csv', target_column = 4, columns_to_ignore = [0], categorical_labels = True, n_classes = 2)
+
+# for x in data:
+#     x[8] = int(x[8])
+
 
 net = tflearn.input_data(shape=[None,6])
 net = tflearn.fully_connected(net, 32)
