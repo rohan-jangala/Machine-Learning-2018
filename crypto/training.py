@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn import preprocessing
 from sklearn.metrics import mean_squared_error, classification_report
 import matplotlib.pylab as plt
 import datetime as dt
@@ -53,24 +52,33 @@ X_train, X_test, Y_train, Y_test = create_Xt_Yt(X, Y, percentage = 1)
 
 
 print("Building model...")
-model = Sequential
-model.add(Dense(500, input_shape = (TRAIN_SIZE,)))
-model.add(Activation('relu'))
-model.add(Dropout(0.25))
-model.add(Dense(250))
-model.add(Activation('relu'))
-model.add(Dense(1))
-model.add(Activation('linear'))
+model = Sequential([
+    Dense(500, input_shape = (TRAIN_SIZE,)),
+    Activation('relu'),
+    Dropout(0.25),
+    Dense(250),
+    Activation('relu'),
+    Dense(1),
+    Activation('linear')
+])
+
+# model.add(Dense(500, input_shape = (TRAIN_SIZE,)))
+# model.add(Activation('relu'))
+# model.add(Dropout(0.25))
+# model.add(Dense(250))
+# model.add(Activation('relu'))
+# model.add(Dense(1))
+# model.add(Activation('linear'))
 model.compile(optimizer = 'adam', loss = 'mse')
 
 
-model.fit(X_train, Y_train, nb_epoch = 5, batch_size = 128, verbose = 1, validation_split = 0.1)
+model.fit(X_train, Y_train, epochs = 5, batch_size = 128, verbose = 1, validation_split = 0.1)
 score = model.evaluate(X_test, Y_test, batch_size = 128)
 print(score)
 
 
 params = []
-for xt in X_testp:
+for xt in X_test:
     xt = np.array(xt)
     mean_ = xt.mean()
     scale_ = xt.std()
