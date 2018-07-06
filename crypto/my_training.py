@@ -55,12 +55,12 @@ print("Building model...")
 model = Sequential([
     Dense(32, input_shape = (TRAIN_SIZE,)),
     Activation('relu'),
-    #Dropout(0.25),
+    Dropout(0.25),
     Dense(10),
     Activation('softmax')
-    #Activation('relu'),
-    #Dense(1),
-    #Activation('linear')
+    Activation('relu'),
+    Dense(1),
+    Activation('linear')
 ])
 
 """model.add(Dense(32, input_shape = (20,)))
