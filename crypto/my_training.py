@@ -53,22 +53,23 @@ X_train, X_test, Y_train, Y_test = create_Xt_Yt(X, Y, percentage = 1)
 
 print("Building model...")
 model = Sequential([
-    Dense(500, input_shape = (TRAIN_SIZE,)),
+    Dense(32, input_shape = (TRAIN_SIZE,)),
     Activation('relu'),
-    Dropout(0.25),
-    Dense(250),
-    Activation('relu'),
-    Dense(1),
-    Activation('linear')
+    #Dropout(0.25),
+    Dense(10),
+    Activation('softmax')
+    #Activation('relu'),
+    #Dense(1),
+    #Activation('linear')
 ])
 
-# model.add(Dense(500, input_shape = (TRAIN_SIZE,)))
-# model.add(Activation('relu'))
-# model.add(Dropout(0.25))
-# model.add(Dense(250))
-# model.add(Activation('relu'))
-# model.add(Dense(1))
-# model.add(Activation('linear'))
+"""model.add(Dense(32, input_shape = (20,)))
+model.add(Activation('relu'))
+model.add(Dropout(0.25))
+model.add(Dense(250))
+model.add(Activation('relu'))
+model.add(Dense(1))
+model.add(Activation('linear'))"""
 model.compile(optimizer = 'adam', loss = 'mse')
 
 
